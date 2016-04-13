@@ -65,6 +65,7 @@ function simpleSave(type, path, blob) {
                     }
 
                     storageDocument.body = JSON.stringify(blob);
+                    console.log("simpleSave", "blob got:", JSON.stringify(blob));
 
                     storageDocument.save(function (err, storageDocument) {
                         if (err) {
