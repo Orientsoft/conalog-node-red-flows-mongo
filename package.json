@@ -1,5 +1,5 @@
 {
-  "name": "node-red-flows-mongo",
+  "name": "conalog-node-red-flows-mongo",
   "version": "0.5.2",
   "description": "Node Red Module to store Flows and the library in Mongo.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:freefoote/node-red-flows-mongo.git"
+    "url": "git@github.com/Orientsoft/conalog-node-red-flows-mongo.git"
   },
   "keywords": [
     "node-red",
