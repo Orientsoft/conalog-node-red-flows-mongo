@@ -3,6 +3,7 @@ var nodeFn = require('when/node/function');
 var keys = require('when/keys');
 var mongoose = require('mongoose');
 var path = require('path');
+var http = require('http');
 
 var settings;
 
@@ -65,7 +66,25 @@ function simpleSave(type, path, blob) {
                     }
 
                     storageDocument.body = JSON.stringify(blob);
-                    console.log("simpleSave", "[type]", type, "[path]", path, "\n[blob]\n", JSON.stringify(blob));
+                    // console.log("simpleSave", "[type]", type, "[path]", path, "\n[blob]\n", JSON.stringify(blob));
+
+                    if (type === 'flows')
+                    {
+                      // ajax request - config
+                      var opts = {
+                        hostname: settings.conalogHost,
+                        port: settings.conalogPort
+                      };
+                      opts.method = 'POST';
+                      opts.path = '/flow/scan';
+                      var data = JSON.stringify(blob);
+
+                      var req = http.request(opts, function(res) {
+                        // do nothing
+                      });
+                      req.write(data);
+                      req.end();
+                    }
 
                     storageDocument.save(function (err, storageDocument) {
                         if (err) {
